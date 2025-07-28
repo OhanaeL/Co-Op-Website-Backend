@@ -45,4 +45,4 @@ const ictce02Schema = new mongoose.Schema({
     studentEmails: [String]
 });
 
-module.exports = mongoose.model('Ictce02', ictce02Schema);
+module.exports = mongoose.model('ICTCE02', ictce02Schema);

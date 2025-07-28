@@ -1,14 +1,19 @@
 const ICTCE01 = require('../models/ICTCE01');
 const cloudinary = require('../utils/cloudinary');
+const streamifier = require('streamifier');
 
-// Helper to upload file buffer to Cloudinary
 const uploadToCloudinary = (fileBuffer) => {
   return new Promise((resolve, reject) => {
-    const stream = cloudinary.uploader.upload_stream({ resource_type: 'auto' }, (error, result) => {
-      if (error) reject(error);
-      else resolve(result);
-    });
-    stream.end(fileBuffer);
+    const stream = cloudinary.uploader.upload_stream(
+      { resource_type: 'auto' },
+      (error, result) => {
+        if (error) return reject(error);
+        resolve(result);
+      }
+    );
+
+    // Convert the file buffer into a stream and pipe it to Cloudinary
+    streamifier.createReadStream(fileBuffer).pipe(stream);
   });
 };
 

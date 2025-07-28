@@ -131,4 +131,4 @@ const ICTCE01Schema = new mongoose.Schema({
     attachments: [],
 }, { timestamps: true });
 
-module.exports = mongoose.model('Ictce01', ICTCE01Schema);
+module.exports = mongoose.model('ICTCE01', ICTCE01Schema);

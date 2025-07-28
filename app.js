@@ -7,6 +7,11 @@ const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const ICTCE01Routes = require('./routes/ICTCE01Routes');
 const ICTCE02Routes = require('./routes/ICTCE02Routes');
+const weeklyReportRoutes = require('./routes/weeklyReportRoutes');
+const finalReportRoutes = require('./routes/finalReportRoutes');
+const consentFormRoutes = require('./routes/consentFormRoutes');
+const evaluationCompanyRoutes = require('./routes/evaluationFormCompanyRoutes');
+const evaluationSupervisorRoutes = require('./routes/evaluationFormSupervisorRoutes');
 
 const app = express();
 
@@ -57,6 +62,11 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/ictce01', ICTCE01Routes);
 app.use('/api/ictce02', ICTCE02Routes);
+app.use('/api/weekly-report', weeklyReportRoutes);
+app.use('/api/final-report', finalReportRoutes);
+app.use('/api/consent-form', consentFormRoutes);
+app.use('/api/evaluation/company', evaluationCompanyRoutes);
+app.use('/api/evaluation/ajarn', evaluationSupervisorRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
